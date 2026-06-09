@@ -15,8 +15,8 @@ type PostgresUser struct {
 	db *gorm.DB
 }
 
-func (p *PostgresUser) Create(user model.User) error {
-	return p.db.Create(&user).Error
+func (p *PostgresUser) Create(user *model.User) error {
+	return p.db.Create(user).Error
 }
 
 func (p *PostgresUser) Delete(id int) error {

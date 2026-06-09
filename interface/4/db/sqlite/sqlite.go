@@ -1,21 +1,22 @@
 package sqlite
 
 import (
+	"plbformation/interface/4/db"
+
 	"github.com/glebarez/sqlite"
 	"gorm.io/gorm"
 )
 
-type SQLite struct {
-	DB *gorm.DB
-}
-
-func NewSQLite(name string) *SQLite {
-	db, err := gorm.Open(sqlite.Open(name), &gorm.Config{})
+func NewSQLite(name string) *db.DBStore {
+	_, err := gorm.Open(sqlite.Open(name), &gorm.Config{})
 	if err != nil {
 		panic("failed to connect database")
 	}
 
-	return &SQLite{DB: db}
+	return &db.DBStore{
+		// User:    &SQLiteUser{db: dbconn},
+		// Product: &SQLiteProduct{db: dbconn},
+	}
 }
 
 // Implementation of UserStore interface

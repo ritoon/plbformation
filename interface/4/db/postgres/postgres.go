@@ -1,22 +1,38 @@
 package postgres
 
 import (
+	"log"
+
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
+
+	"plbformation/interface/4/db"
 )
 
-type Postgres struct {
-	DB      *gorm.DB
-	User    *PostgresUser
-	Product *PostgresProduct
+func NewPostgres(name string) *db.DBStore {
+	defer func() {
+		if r := recover(); r != nil {
+			log.Printf("Recovered in NewPostgres: %v", r)
+		}
+	}()
+
+	dbconn, err := connectPostgres()
+	if err != nil {
+		panic(err)
+	}
+
+	var store db.DBStore
+	store.User = &PostgresUser{db: dbconn}
+	store.Product = &PostgresProduct{db: dbconn}
+
+	return &store
 }
 
-func NewPostgres(name string) *Postgres {
+func connectPostgres() (*gorm.DB, error) {
 	dsn := "host=localhost user=gorm password=gorm dbname=gorm port=9920 sslmode=disable TimeZone=Asia/Shanghai"
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
 		panic("failed to connect database")
 	}
-
-	return &Postgres{DB: db}
+	return db, nil
 }

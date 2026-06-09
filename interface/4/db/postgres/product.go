@@ -15,7 +15,11 @@ type PostgresProduct struct {
 	db *gorm.DB
 }
 
-func (p *PostgresProduct) Create(product model.Product) error {
+func (p *PostgresProduct) Create(product *model.Product) error {
+	if product == nil {
+		return db.NewErrorDb("product is nil", nil, "Create Product", true)
+	}
+
 	return p.db.Create(&product).Error
 }
 
