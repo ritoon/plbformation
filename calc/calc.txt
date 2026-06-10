@@ -1,0 +1,17 @@
+mode: set
+plbformation/calc/main.go:18.45,19.12 1 1
+plbformation/calc/main.go:19.12,21.3 1 1
+plbformation/calc/main.go:22.2,22.26 1 1
+plbformation/calc/main.go:26.42,28.48 2 1
+plbformation/calc/main.go:28.48,30.3 1 1
+plbformation/calc/main.go:31.2,31.24 1 1
+plbformation/calc/main.go:35.42,37.48 2 1
+plbformation/calc/main.go:37.48,39.3 1 1
+plbformation/calc/main.go:40.2,40.24 1 1
+plbformation/calc/main.go:44.47,46.48 2 1
+plbformation/calc/main.go:46.48,48.3 1 1
+plbformation/calc/main.go:49.2,49.24 1 1
+plbformation/calc/main.go:57.32,59.2 1 0
+plbformation/calc/main.go:62.29,64.2 1 0
+plbformation/calc/main.go:67.29,69.2 1 0
+plbformation/calc/main.go:72.34,74.2 1 0
